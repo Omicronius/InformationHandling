@@ -1,8 +1,9 @@
-package com.epam.informationhandling.util;
+package com.epam.informationhandling.reader;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -12,10 +13,10 @@ import java.util.stream.Collectors;
 public class TextReader {
     private static Logger logger = LogManager.getLogger(TextReader.class);
 
-    public String readText(String pathToFile) {
-        String text = null;
+    public String readTextFromFile(String filepath) {
+        String content = null;
         try {
-            text = Files.lines(Paths.get(pathToFile)).collect(Collectors.joining());
+            content = Files.lines(Paths.get(filepath)).collect(Collectors.joining());
         } catch (NoSuchFileException e) {
             logger.log(Level.FATAL, "The file has not been found.");
             throw new RuntimeException();
@@ -23,6 +24,6 @@ public class TextReader {
             logger.log(Level.FATAL, "The IOException is occured.");
             throw new RuntimeException();
         }
-        return text;
+        return content;
     }
 }

@@ -1,19 +1,19 @@
 package com.epam.informationhandling.chain;
 
-import com.epam.informationhandling.entity.Component;
-import com.epam.informationhandling.entity.ComponentType;
-import com.epam.informationhandling.entity.TextComposite;
+import com.epam.informationhandling.composite.Component;
+import com.epam.informationhandling.composite.TextComposite;
+
+import static com.epam.informationhandling.composite.ComponentType.PARAGRAPH;
+
 
 public class ParagraphSeparator implements ISeparator {
-    private ISeparator separator = new SentenceSeparator();
-    private static final String SENTENCE_REGEX = "(?<=[.!?])";
+    private static final ISeparator separator = new SentenceSeparator();
+    private static final String SENTENCE_TERMINATOR = "(?<=[.!?])";
 
     public Component separate(String paragraph) {
-        Component textComposite = new TextComposite(ComponentType.PARAGRAPH);
-        for (String part : paragraph.split(SENTENCE_REGEX)) {
-            if (!part.isEmpty()) {
-                textComposite.add(separator.separate(part));
-            }
+        Component textComposite = new TextComposite(PARAGRAPH);
+        for (String part : paragraph.split(SENTENCE_TERMINATOR)) {
+            textComposite.add(separator.separate(part.trim()));
         }
         return textComposite;
     }
