@@ -32,11 +32,13 @@ public class Runner {
             "\tBye.";
 
     public static void main(String[] args) {
-        String [] arr = "5*(1*2*(3*(4*(5-4)-3)-2)-1)".split("");
-        Arrays.sort(arr);
+        //String [] arr = "5*(1*2*(3*(4*(5-4)-3)-2)-1)".split("");
+        //Arrays.sort(arr);
         TextReader textReader = new TextReader();
         String content = textReader.readText(pathToFile);
         TextSeparator textSeparator = new TextSeparator();
         Component composite = textSeparator.separate(my);
+        System.out.println(composite);
+        System.out.println();
     }
 }

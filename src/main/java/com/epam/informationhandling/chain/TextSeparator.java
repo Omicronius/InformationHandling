@@ -17,7 +17,6 @@ public class TextSeparator implements ISeparator {
         Pattern pattern = Pattern.compile(PARAGRAPH_REGEX);
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()) {
-            String str = matcher.group();
             textComposite.add(separator.separate(matcher.group()));
         }
         return textComposite;

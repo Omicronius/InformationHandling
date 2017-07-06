@@ -32,7 +32,11 @@ public class TextComposite extends Component {
         StringBuilder stringBuilder = new StringBuilder();
         for (Component component : components) {
             stringBuilder.append(component.toString());
-            stringBuilder.append(" ");
+            if (component.getType() == ComponentType.LEXEME) {
+                stringBuilder.append(" ");
+            } else if (component.getType() == ComponentType.PARAGRAPH) {
+                stringBuilder.append("\n");
+            }
         }
         return stringBuilder.toString();
     }

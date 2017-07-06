@@ -32,6 +32,6 @@ public class TextLeaf extends Component {
 
     @Override
     public String toString() {
-        return value.trim();
+        return value;
     }
 }
